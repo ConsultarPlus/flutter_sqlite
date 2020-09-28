@@ -32,7 +32,7 @@ class DatabaseHelper{
       CREATE TABLE ${Medicion.tblMedicion}(
         ${Medicion.colId} INTEGER PRIMARY KEY AUTOINCREMENT,
         ${Medicion.colMedidor} TEXT NOT NULL,
-        ${Medicion.colMedicion} INTEGER NOT NULL,
+        ${Medicion.colLectura} INTEGER NOT NULL,
         ${Medicion.colDomicilio} TEXT NOT NULL
         )  
     ''');

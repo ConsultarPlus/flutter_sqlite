@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   DatabaseHelper _dbHelper ;
   final _formKey = GlobalKey<FormState>();
   final _ctrlMedidor = TextEditingController();
-  final _ctrlMedicion = TextEditingController();
+  final _ctrlLectura = TextEditingController();
   final _ctrlDomicilio = TextEditingController();
 
   @override
@@ -93,9 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 validator: (val)=>(val.length == 0 ? 'Debe cargar el medidor':null),
               ),
               TextFormField(
-                controller: _ctrlMedicion,
+                controller: _ctrlLectura,
                 decoration: InputDecoration(labelText: 'Medición'),
-                onSaved: (val) => setState(()=>_medicion.medicion = int.parse(val)),
+                onSaved: (val) => setState(()=>_medicion.lectura = int.parse(val)),
                 validator: (val)=>(val.length>6 ?'Cuuidado, muy alto!':null),
               ),
               Container(
@@ -125,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
       else await _dbHelper.updateMedicion(_medicion);
       _refrescarMedicionesList();
       _resetForm();
-      print(_medicion.medicion);
+      print(_medicion.lectura);
     }
   }
 
@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         _formKey.currentState.reset();
         _ctrlDomicilio.clear();
-        _ctrlMedicion.clear();
+        _ctrlLectura.clear();
         _ctrlMedidor.clear();
         _medicion.id = null;
       });
@@ -148,12 +148,12 @@ class _MyHomePageState extends State<MyHomePage> {
           return Column(
             children: <Widget>[
               ListTile(
-                title: Text(_mediciones[index].domicilio+' - ('+_mediciones[index].medidor+') - '+_mediciones[index].medicion.toString()),
+                title: Text(_mediciones[index].domicilio+' - ('+_mediciones[index].medidor+') - '+_mediciones[index].lectura.toString()),
                 onTap: () {
                   setState(() {
                     _medicion = _mediciones[index];
                     _ctrlMedidor.text = _mediciones[index].medidor;
-                    _ctrlMedicion.text = _mediciones[index].medicion.toString();
+                    _ctrlLectura.text = _mediciones[index].lectura.toString();
                     _ctrlDomicilio.text = _mediciones[index].domicilio;
                   });
                 },
