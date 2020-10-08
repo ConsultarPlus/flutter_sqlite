@@ -1,36 +1,56 @@
 class Medicion {
   static const tblMedicion = 'mediciones';
   static const colId = 'id';
-  static const colDomicilio = 'domicilio';
+  static const colPeriodo = 'periodo';
+  static const colPadron = 'padron';
   static const colMedidor = 'medidor';
   static const colLectura = 'lectura';
+  static const colDomicilio = 'domicilio';
+  static const colUltima = 'ultima';
+  static const colInspector = 'inspector';
 
-  Medicion({this.id, this.medidor, this.lectura, this.domicilio});
+  Medicion({this.id, this.periodo, this.padron, this.medidor, this.lectura, this.domicilio, this.ultima, this.inspector});
 
   Medicion.fromJson(Map<String, dynamic> json)
       : id = json['id'],
-        lectura = json['lectura'],
+        periodo = json['periodo'],
+        padron = json['padron'],
         medidor = json['medidor'],
-        domicilio = json['domicilio'];
+        lectura = json['lectura'],
+        domicilio = json['domicilio'],
+        ultima = json['ultima_lectura'],
+        inspector = json['inspector'];
 
   Medicion.fromMap(Map<String, dynamic> map) {
     id = map[colId];
+    periodo = map[colPeriodo];
+    padron = map[colPadron];
     medidor = map[colMedidor];
     lectura = map[colLectura];
     domicilio = map[colDomicilio];
+    ultima = map[colUltima];
+    inspector = map[colInspector];
   }
 
   int id;
+  String periodo;
+  String padron;
   String medidor;
   int lectura;
   String domicilio;
+  int ultima;
+  int inspector;
 
   Map<String, dynamic> toJson() =>
       {
         'id': id,
+        'periodo': periodo,
+        'padron': padron,
         'medidor': medidor,
         'lectura': lectura,
         'domicilio': domicilio,
+        'ultima': ultima,
+        'inspector': inspector,
       };
 
   Map<String, dynamic> toMap() {

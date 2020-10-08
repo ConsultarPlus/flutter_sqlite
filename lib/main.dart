@@ -11,12 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter con SQLite',
+      title: 'Comuna Alvear - Mediciones',
       theme: ThemeData(
-        primaryColor: Colors.blue.shade600,
+        primaryColor: Colors.green.shade800,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter con SQLite prueba'),
+      home: MyHomePage(title: 'Comuna Alvear - Lecturas'),
     );
   }
 }
@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Center(
           child: Text(widget.title,
-            style: TextStyle(color: Colors.blue[400]),),
+            style: TextStyle(color: Colors.green[400]),),
         ),
       ),
       body: Center(
@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               TextFormField(
                 controller: _ctrlLectura,
-                decoration: InputDecoration(labelText: 'Medición'),
+                decoration: InputDecoration(labelText: 'Lectura'),
                 onSaved: (val) => setState(()=>_medicion.lectura = int.parse(val)),
                 validator: (val)=>(val.length>6 ?'Cuuidado, muy alto!':null),
               ),
@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 margin: EdgeInsets.all(10.0),
                 child: RaisedButton(
                   onPressed: ()=> _onSumbit(),
-                  child: Text('Grabar Medición'),
+                  child: Text('Grabar Lectura'),
                 ),
               )
             ],
